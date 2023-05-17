@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 For testing, you can login with email: `testUser@gmail.com` and password: `password`
 
+## Demo:
+
+Check out the project hosted on: [URL](https://celebrated-kheer-a0f824.netlify.app)
+
 ## Available Scripts
 
 In the project directory, you can run:

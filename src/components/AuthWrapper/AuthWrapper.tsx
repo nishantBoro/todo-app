@@ -24,7 +24,7 @@ function AuthWrapper ({ children }: { children: ReactNode }) {
     deleteToken()
     setUserData(getIntialUserData())
     navigate('/login')
-  }, [])
+  }, [navigate])
 
   useEffect(() => {
     const token = getToken()
