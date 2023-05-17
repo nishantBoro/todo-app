@@ -1,14 +1,17 @@
-import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import { Button } from '../Button';
 
 import { Input } from '../Input';
 
+import styles from './styles.module.css'
+
 interface AddTodoTypes {
   handleAddTodo: (value: string) => void
+  className?: string
 }
 
-function AddTodo({ handleAddTodo }: AddTodoTypes) {
+function AddTodo({ handleAddTodo, className }: AddTodoTypes) {
   const [todoText, setTodoText] = useState('');
 
   function handleInputUpdate(e: ChangeEvent<HTMLInputElement>) {
@@ -18,18 +21,19 @@ function AddTodo({ handleAddTodo }: AddTodoTypes) {
   }
 
   return (
-    <>
-      <h3>Add Todo</h3>
+    <div className={className}>
+      <h3 className={styles.addTodoHeading}>Add Todo</h3>
       <Input
         placeholder='Add Todo'
         onChange={handleInputUpdate}
+        className={styles.inputWrapper}
       />
       <Button 
         handleClick={handleAddTodo.bind(null, todoText)}
       >
         Add
       </Button>
-    </>
+    </div>
   )
 }
 

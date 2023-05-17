@@ -12,10 +12,12 @@ function TodoItem(props: TodoItemTypes) {
 
   return (
     <div className={styles.todoItem}>
-      <div>
+      <div className={styles.todoItemText}>
         <h3>{ text }</h3>
       </div>
-      { children }
+      <div>
+        { children }
+      </div>
     </div>
   )
 }

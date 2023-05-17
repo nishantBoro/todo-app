@@ -1,4 +1,49 @@
 .todoItem {
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aliceblue;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 16px;
 }
 
+@media only screen and (max-width: 600px) {
+  .todoItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .todoItemText {
+    margin-bottom: 12px;
+  } 
+}
+
+.pageHeading {
+  text-align: center;
+}
+
+.inputWrapper {
+  margin-bottom: 20px;
+}
+
+.todosWrapper {
+  padding-top: 20px;
+}
+
+.leftCta {
+  margin-right: 12px;
+}
+
+.addTodoHeading {
+  margin-bottom: 12px;
+}
+
+.subtaskSection {
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.addTodoSubtask {
+  padding-top: 20px;
+}

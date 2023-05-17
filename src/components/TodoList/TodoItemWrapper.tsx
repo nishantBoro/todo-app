@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { TodoPageContext } from '../../context'
 
@@ -40,18 +40,19 @@ function TodoItemWrapper(props: TodoItemWrapperTypes) {
       <TodoItem
         text={text}
       >
-        <div>
-          <Button 
+        <>
+          <Button
             handleClick={setSubtaskVisible.bind(null, !isSubtaskVisible)}
+            className={styles.leftCta}
           >
             Show Subtasks
           </Button>
           <Button handleClick={deleteTodo.bind(null, id)}>Delete Item</Button>
-        </div>
+        </>
       </TodoItem>
       {
         isSubtaskVisible && (
-          <>
+          <div className={styles.subtaskSection}>
             { 
               subtasks && subtasks.map((item: TodoSubtask) => {
                 const { text } = item;
@@ -60,15 +61,16 @@ function TodoItemWrapper(props: TodoItemWrapperTypes) {
                   <TodoItem 
                     text={text}
                   >
-                    <div>
-                      <Button handleClick={deleteTodo.bind(null, id)}>Delete Item</Button>
-                    </div>
+                    <Button handleClick={deleteTodo.bind(null, id)}>Delete Item</Button>
                   </TodoItem>
                 )
               })
             }
-            <AddTodo handleAddTodo={handleAddSubtask} />
-          </>
+            <AddTodo
+              handleAddTodo={handleAddSubtask}
+              className={styles.addTodoSubtask}
+            />
+          </div>
         )
       }
     </>

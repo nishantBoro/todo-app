@@ -4,17 +4,19 @@ import styles from './styles.module.css'
 
 interface InputType {
   placeholder: string,
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void,
+  className: string
 }
 
 function Input({
   placeholder,
-  onChange
+  onChange,
+  className
 }: InputType) {
   return (
     <input
       placeholder={placeholder}
-      className={styles.input}
+      className={`${styles.input} ${className}`}
       onChange={onChange}
     />
   )

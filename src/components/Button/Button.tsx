@@ -6,10 +6,11 @@ interface ButtonTypes {
   variant?: string
   children: ReactNode
   handleClick: (e: MouseEvent<HTMLButtonElement>) => void
+  className?: string
 }
 
 function Button(props: ButtonTypes) {
-  const { variant = 'primary', children, handleClick } = props;
+  const { variant = 'primary', children, handleClick, className } = props;
 
   const classNamesMap: {
     [k:string]: string
@@ -19,7 +20,7 @@ function Button(props: ButtonTypes) {
 
   return (
     <button 
-      className={classNamesMap[variant]}
+      className={`${classNamesMap[variant]} ${className}`}
       onClick={handleClick}
     >
       { children }

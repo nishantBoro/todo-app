@@ -1,10 +1,12 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 
 import { TodoPageContext } from '../../context';
 
 import { TodoItem as TodoItemType, TodoSubtask as TodoSubtaskType } from '../../types';
 
 import { generateID } from '../../utils';
+
+import styles from './styles.module.css';
 
 import AddTodo from './AddTodo';
 import Todos from './Todos';
@@ -20,19 +22,21 @@ function TodoList() {
   }
 
   function addTodoSubTask(todoId: number, subtask: TodoSubtaskType) {
-    const tobeUpdatedTodo = todos.find(item => item.id === todoId);
+    const tobeUpdatedTodoIdx = todos.findIndex(item => item.id === todoId);
+    const tobeUpdatedTodoCurr = todos[tobeUpdatedTodoIdx];
 
-    if (tobeUpdatedTodo && tobeUpdatedTodo.subtasks) {
-      setTodos([
-        ...todos,
-        {
-          ...tobeUpdatedTodo,
-          subtasks: [
-            ...tobeUpdatedTodo.subtasks,
-            subtask
-          ]
-        }
-      ])
+    if (tobeUpdatedTodoCurr && tobeUpdatedTodoCurr.subtasks) {
+      const tobeUpdatedTodo: TodoItemType = {
+        ...tobeUpdatedTodoCurr,
+        subtasks: [
+          ...tobeUpdatedTodoCurr.subtasks,
+          subtask
+        ]
+      }
+
+      todos[tobeUpdatedTodoIdx] = tobeUpdatedTodo;
+
+      setTodos([...todos])
     } 
   }
 
@@ -46,7 +50,8 @@ function TodoList() {
     if (todoText) {
       addTodo({
         id: generateID(),
-        text: todoText
+        text: todoText,
+        subtasks: []
       })
     }
   }
@@ -60,7 +65,11 @@ function TodoList() {
         addTodoSubTask
       }}
     >
-      <h2>Todo List</h2>
+      <h2 
+        className={styles.pageHeading}
+      >
+        Todo List
+      </h2>
       <AddTodo
         handleAddTodo={handleAddTodo}
       />
