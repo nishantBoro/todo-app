@@ -10,17 +10,33 @@ interface AuthGetUser {
   }
 }
 
-async function post<T>(route: string, payload: T): Promise<AuthLoginResponse> {
+interface AuthLoginPayload {
+  email: string
+  password: string
+}
+
+type PaylaodType = AuthLoginPayload
+
+/* 
+  Mock API utility helper to mock BE server
+*/
+async function post(route: string, payload: PaylaodType): Promise<AuthLoginResponse> {
 
   return new Promise(function post(resolve, reject) {
     setTimeout(() => {
       if (route === '/auth/login') {
         // Token Generator secret key: 'supersecretkey'
-        resolve({
-          body: {
-            accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJFbWFpbCI6Im5pc2hhbnQ0MzE3QGdtYWlsLmNvbSIsIklzc3VlciI6IlRvZG9BcHAiLCJleHAiOjE3MTU5MTM5NzcsImlhdCI6MTY4NDI5MTU3N30.siJvrvinkkDm7coJVYLnVAHBiIK60V9V-La_28I8qVE'
-          }
-        })
+        const { email, password } = payload;
+
+        if (email === 'testUser@gmail.com' &&  password === 'password') {
+          resolve({
+            body: {
+              accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJFbWFpbCI6Im5pc2hhbnQ0MzE3QGdtYWlsLmNvbSIsIklzc3VlciI6IlRvZG9BcHAiLCJleHAiOjE3MTU5MTM5NzcsImlhdCI6MTY4NDI5MTU3N30.siJvrvinkkDm7coJVYLnVAHBiIK60V9V-La_28I8qVE'
+            }
+          })
+        } else {
+          reject()
+        }
       }
   
       reject()

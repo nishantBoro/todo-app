@@ -27,6 +27,7 @@ function Login () {
       updateToken({ accessToken })
       setUserData({ email })
       navigate('/')
+      setPageStatus('success')
     } catch (error) {
       setPageStatus('error')
     }
@@ -47,12 +48,10 @@ function Login () {
     setPageStatus('loading')
 
     await signIn()
-
-    setPageStatus('success')
   }
 
   useEffect(() => {
-    return () => setPageStatus('success')
+    return () => setPageStatus('init')
   }, [])
 
   return (
@@ -95,6 +94,14 @@ function Login () {
             className={styles.inputStyles}
           />
         </div>
+        
+        {
+          pageStatus === 'error' && (
+            <h4 className={styles.errorMssg}>
+              Invalid credentials. Please try again.
+            </h4>
+          )
+        }
 
         <Button
           type="submit"
