@@ -5,19 +5,31 @@ import styles from './styles.module.css'
 interface InputType {
   placeholder: string,
   onChange: (e: ChangeEvent<HTMLInputElement>) => void,
-  className: string
+  className?: string,
+  value?: string,
+  type?: string,
+  name?: string,
+  id?: string
 }
 
 function Input({
   placeholder,
   onChange,
-  className
+  className,
+  value,
+  type,
+  name,
+  id
 }: InputType) {
   return (
     <input
       placeholder={placeholder}
       className={`${styles.input} ${className}`}
       onChange={onChange}
+      value={value}
+      type={type}
+      name={name}
+      id={id}
     />
   )
 }

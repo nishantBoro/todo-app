@@ -1,16 +1,26 @@
-import React, { ReactNode, MouseEvent } from 'react';
+import React, { ReactNode, MouseEvent, HTMLProps } from 'react';
 
 import styles from './styles.module.css'
 
-interface ButtonTypes {
+export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   variant?: string
   children: ReactNode
-  handleClick: (e: MouseEvent<HTMLButtonElement>) => void
+  handleClick?: (e: MouseEvent<HTMLButtonElement>) => void
   className?: string
+  isFullWidth?: boolean
+  type?: 'submit' | 'reset' | 'button' | undefined
 }
 
-function Button(props: ButtonTypes) {
-  const { variant = 'primary', children, handleClick, className } = props;
+
+function Button(props: ButtonProps) {
+  const { 
+    variant = 'primary', 
+    children, 
+    handleClick, 
+    className, 
+    type, 
+    isFullWidth = false 
+  } = props;
 
   const classNamesMap: {
     [k:string]: string
@@ -20,8 +30,9 @@ function Button(props: ButtonTypes) {
 
   return (
     <button 
-      className={`${classNamesMap[variant]} ${className}`}
+      className={`${classNamesMap[variant]} ${className} ${isFullWidth ? styles.isFullWidth : ''}`}
       onClick={handleClick}
+      type={type}
     >
       { children }
     </button>

@@ -1,9 +1,13 @@
 import React, { FormEvent, useContext, useEffect, useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+import { Button, Input } from '../../components';
+
 import { AuthContext } from '../../context'
 
 import { apiHelper, updateToken } from '../../utils';
+
+import styles from './styles.module.css';
 
 function Login () {
   const [values, setValues] = useState({
@@ -52,43 +56,53 @@ function Login () {
   }, [])
 
   return (
-    <div>
+    <div className={styles.loginWrapper}>
+      
       <form
         noValidate
-        data-testid="login-form"
         onSubmit={handleSubmit}
+        className={styles.form}
       >
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
+        <h2 className={styles.heading}>
+          Login
+        </h2>
+        <div className={styles.inputElement}>
+          <label 
+            htmlFor="email" 
+          >
+            Email
+          </label>
+          <Input
             value={values.email}
+            placeholder="Enter your email ID"
             type="email"
             name="email"
             id="email"
-            data-testid="login-input-email"
             onChange={handleChange}
+            className={styles.inputStyles}
           />
         </div>
 
-        <div>
+        <div className={styles.inputElement}>
           <label htmlFor="password">Password</label>
-          <input
+          <Input
             value={values.password}
+            placeholder="Enter your password"
             type="password"
             name="password"
             id="password"
-            data-testid="login-input-password"
             onChange={handleChange}
+            className={styles.inputStyles}
           />
         </div>
 
-        <button
+        <Button
           type="submit"
-          data-testid="login-submit-button"
-          disabled={pageStatus === 'loading'}
+          isFullWidth
+          className={styles.buttonStyles}
         >
-          Submit
-        </button>
+          Login
+        </Button>
       </form>
     </div>
   )

@@ -1,0 +1,33 @@
+.form {
+  padding: 20px;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  border-radius: 8px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.loginWrapper {
+  padding: 12px;
+  margin-top: 40px;
+}
+
+.label {
+  margin-bottom: 12px;
+}
+
+.inputStyles {
+  margin-top: 8px;
+}
+
+.inputElement {
+  margin-top: 16px;
+}
+
+.buttonStyles {
+  margin-top: 24px;
+}
+
+.heading {
+  margin-bottom: 32px;
+  font-size: 30px;
+}

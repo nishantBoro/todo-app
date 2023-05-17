@@ -3,12 +3,13 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { RoutesList } from './routes';
 
-import AuthWrapper from './components/AuthWrapper/AuthWrapper';
+import { AuthWrapper, NavBar } from './components';
 
 function App() {
   return (
     <BrowserRouter>
       <AuthWrapper>
+        <NavBar />
         <RoutesList />
       </AuthWrapper>
     </BrowserRouter>
