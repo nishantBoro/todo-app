@@ -1,18 +1,30 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../context';
 
-import { apiHelper, getToken } from '../../utils';
+import { apiHelper, deleteToken, getToken } from '../../utils';
 
 interface User {
   email: string
 }
 
-function AuthWrapper ({ children }: { children: ReactNode }) {
-  const [userData, setUserData] = useState<User>({
+function getIntialUserData() {
+  return {
     email: ''
-  })
+  }
+}
+
+function AuthWrapper ({ children }: { children: ReactNode }) {
+  const [userData, setUserData] = useState<User>(getIntialUserData)
+  const navigate = useNavigate()
   const token = getToken()
+
+  const cachedLogout = useCallback(function logout() {
+    deleteToken()
+    setUserData(getIntialUserData())
+    navigate('/login')
+  }, [])
 
   useEffect(() => {
     const token = getToken()
@@ -24,20 +36,21 @@ function AuthWrapper ({ children }: { children: ReactNode }) {
         const { email } = response.body
         setUserData({ email })
       } catch (error) {
-        // Logout
+        cachedLogout()
       }
     }
 
     if (token) {
       validateTokenAndGetUser()
     }
-  }, [])
+  }, [cachedLogout])
 
   return (
     <AuthContext.Provider value={{
       isAuthenticated: !!token,
       userData,
-      setUserData
+      setUserData,
+      logout: cachedLogout
     }}>
       {children}
     </AuthContext.Provider>

@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../context';
 
+import { Button } from '../Button';
+
 import styles from './styles.module.css'
 
 function NavBar() {
-  const { isAuthenticated } = useContext(AuthContext)
+  const { isAuthenticated, logout } = useContext(AuthContext)
 
   return(
     <div className={styles.navbar}>
@@ -19,7 +21,12 @@ function NavBar() {
         }
         {
           isAuthenticated && (
-            <Link className={styles.link} to="/logout">Logout</Link>
+            <Button
+              handleClick={logout}
+              variant='secondary'
+            >
+              Logout
+            </Button>
           )
         }
       </ul>

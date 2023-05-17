@@ -41,13 +41,15 @@ function TodoItemWrapper(props: TodoItemWrapperTypes) {
         text={text}
       >
         <>
-          <Button
-            handleClick={setSubtaskVisible.bind(null, !isSubtaskVisible)}
-            className={styles.leftCta}
-          >
-            Show Subtasks
-          </Button>
-          <Button handleClick={deleteTodo.bind(null, id)}>Delete Item</Button>
+          <img 
+            src="/ic_chevron.png" 
+            alt="Brand"
+            width="20"
+            height="20"
+            onClick={setSubtaskVisible.bind(null, !isSubtaskVisible)}
+            className={isSubtaskVisible ? styles.chevronIconRotated : styles.chevronIcon}
+          />
+          <Button handleClick={deleteTodo.bind(null, id)}>Delete</Button>
         </>
       </TodoItem>
       {
@@ -61,7 +63,7 @@ function TodoItemWrapper(props: TodoItemWrapperTypes) {
                   <TodoItem 
                     text={text}
                   >
-                    <Button handleClick={deleteTodo.bind(null, id)}>Delete Item</Button>
+                    <Button handleClick={deleteTodo.bind(null, id)}>Delete</Button>
                   </TodoItem>
                 )
               })

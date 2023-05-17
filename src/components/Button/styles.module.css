@@ -7,6 +7,17 @@
   color: white;
 }
 
+.secondary {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 16px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .isFullWidth {
   width: 100%;
 }

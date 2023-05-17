@@ -1,4 +1,4 @@
-import { createContext, Dispatch, ReactNode, SetStateAction } from 'react'
+import { createContext, Dispatch, SetStateAction } from 'react'
 
 interface User {
   email: string
@@ -8,6 +8,7 @@ interface AuthContextProps {
   userData: User
   isAuthenticated: boolean,
   setUserData: Dispatch<SetStateAction<User>>
+  logout: () => void
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -15,5 +16,6 @@ export const AuthContext = createContext<AuthContextProps>({
     email: ''
   },
   isAuthenticated: false,
-  setUserData: () => { /* noop */ }
+  setUserData: () => { /* noop */ },
+  logout: () => { /* noop */ }
 });

@@ -14,3 +14,9 @@ export function updateToken({ accessToken }: { accessToken: string }) {
   return '';
 }
 
+export function deleteToken() {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem("accessToken");
+  }
+}
+

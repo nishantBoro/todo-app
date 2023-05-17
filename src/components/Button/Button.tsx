@@ -1,8 +1,8 @@
-import React, { ReactNode, MouseEvent, HTMLProps } from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 
 import styles from './styles.module.css'
 
-export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
+interface ButtonProps {
   variant?: string
   children: ReactNode
   handleClick?: (e: MouseEvent<HTMLButtonElement>) => void
@@ -25,7 +25,8 @@ function Button(props: ButtonProps) {
   const classNamesMap: {
     [k:string]: string
   } = {
-    primary: styles.primary
+    primary: styles.primary,
+    secondary: styles.secondary
   }
 
   return (

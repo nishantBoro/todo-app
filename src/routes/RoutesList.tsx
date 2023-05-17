@@ -29,6 +29,13 @@ const RoutesList = () => {
       >
       </Route>
 
+      <Route 
+        path="*" 
+        element={
+          <h1 style={{ textAlign: 'center', marginTop: '40px' }}>404 - Page Not Found</h1>
+        } 
+      />
+
     </Routes>
   );
 };

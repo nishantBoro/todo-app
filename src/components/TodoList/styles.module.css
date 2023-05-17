@@ -8,17 +8,6 @@
   margin-top: 16px;
 }
 
-@media only screen and (max-width: 600px) {
-  .todoItem {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .todoItemText {
-    margin-bottom: 12px;
-  } 
-}
-
 .pageHeading {
   text-align: center;
 }
@@ -31,8 +20,15 @@
   padding-top: 20px;
 }
 
-.leftCta {
-  margin-right: 12px;
+.chevronIcon {
+  margin-right: 16px;
+  vertical-align: middle;
+}
+
+.chevronIconRotated {
+  transform: rotate(180deg);
+  margin-right: 16px;
+  vertical-align: middle;
 }
 
 .addTodoHeading {
