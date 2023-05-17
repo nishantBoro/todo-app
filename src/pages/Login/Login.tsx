@@ -1,4 +1,5 @@
 import React, { FormEvent, useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../context'
 
@@ -9,8 +10,9 @@ function Login () {
     email: '',
     password: ''
   });
-  const [pageStatus, setPageStatus] = useState('success')
+  const [pageStatus, setPageStatus] = useState('init')
   const { setUserData } = useContext(AuthContext)
+  const navigate = useNavigate();
 
   async function signIn () {
     try {
@@ -20,6 +22,7 @@ function Login () {
 
       updateToken({ accessToken })
       setUserData({ email })
+      navigate('/')
     } catch (error) {
       setPageStatus('error')
     }
