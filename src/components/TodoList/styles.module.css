@@ -23,12 +23,14 @@
 .chevronIcon {
   margin-right: 16px;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .chevronIconRotated {
   transform: rotate(180deg);
   margin-right: 16px;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .addTodoHeading {
