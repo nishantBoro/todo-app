@@ -23,7 +23,7 @@ function TodoItemWrapper(props: TodoItemWrapperTypes) {
 
   const [isSubtaskVisible, setSubtaskVisible] = useState<boolean>(false);
 
-  const { deleteTodo, addTodoSubTask } = useContext(TodoPageContext);
+  const { deleteTodo, addTodoSubTask, deleteSubtask } = useContext(TodoPageContext);
 
   function handleAddSubtask(todoText: string) {
     addTodoSubTask(
@@ -57,13 +57,18 @@ function TodoItemWrapper(props: TodoItemWrapperTypes) {
           <div className={styles.subtaskSection}>
             { 
               subtasks && subtasks.map((item: TodoSubtask) => {
-                const { text } = item;
+                const { text, id: subtaskID } = item;
 
                 return (
                   <TodoItem 
                     text={text}
+                    key={subtaskID}
                   >
-                    <Button handleClick={deleteTodo.bind(null, id)}>Delete</Button>
+                    <Button 
+                      handleClick={deleteSubtask.bind(null, id, subtaskID)}
+                    >
+                      Delete
+                    </Button>
                   </TodoItem>
                 )
               })

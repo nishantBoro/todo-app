@@ -20,6 +20,7 @@ function Todos() {
       
           return (
             <TodoItemWrapper 
+              key={id}
               id={id} 
               text={text}
               subtasks={subtasks}

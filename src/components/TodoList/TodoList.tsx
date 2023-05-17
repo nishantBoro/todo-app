@@ -40,6 +40,22 @@ function TodoList() {
     } 
   }
 
+  function deleteSubtask(todoId: number, subtaskID: number) {
+    const tobeUpdatedTodoIdx = todos.findIndex(item => item.id === todoId);
+    const tobeUpdatedTodoCurr = todos[tobeUpdatedTodoIdx];
+
+    if (tobeUpdatedTodoCurr && tobeUpdatedTodoCurr.subtasks) {
+      const filteredSubtasks = tobeUpdatedTodoCurr.subtasks.filter(item => item.id !== subtaskID);
+
+      todos[tobeUpdatedTodoIdx] = {
+        ...tobeUpdatedTodoCurr,
+        subtasks: filteredSubtasks
+      };
+
+      setTodos([...todos])
+    } 
+  }
+
   function deleteTodo(id: number) {
     const filteredTodos = todos.filter(item => item.id !== id);
     
@@ -62,7 +78,8 @@ function TodoList() {
         todos,
         addTodo,
         deleteTodo,
-        addTodoSubTask
+        addTodoSubTask,
+        deleteSubtask
       }}
     >
       <AddTodo
