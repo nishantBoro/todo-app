@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext, useEffect, useState } from 'react'
+import React, { FormEvent, useContext, useEffect, useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../context'
@@ -28,7 +28,7 @@ function Login () {
     }
   }
 
-  function handleChange (e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange (e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
 
     setValues({

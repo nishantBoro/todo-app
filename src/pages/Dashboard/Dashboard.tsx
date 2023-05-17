@@ -1,9 +1,11 @@
 import React from 'react'
 
+import TodoList from '../../components/TodoList/TodoList';
+
 function Dashboard () {
   return (
     <div>
-      Test
+      <TodoList />
     </div>
   )
 }
