@@ -65,14 +65,14 @@ function TodoList() {
         addTodoSubTask
       }}
     >
-      <h2 
-        className={styles.pageHeading}
-      >
-        Todo List
-      </h2>
       <AddTodo
         handleAddTodo={handleAddTodo}
       />
+      <h2 
+        className={styles.pageHeading}
+      >
+        User Todos
+      </h2>
       <Todos />
     </TodoPageContext.Provider>
   )

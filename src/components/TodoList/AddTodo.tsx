@@ -9,9 +9,10 @@ import styles from './styles.module.css'
 interface AddTodoTypes {
   handleAddTodo: (value: string) => void
   className?: string
+  headingText?: string
 }
 
-function AddTodo({ handleAddTodo, className }: AddTodoTypes) {
+function AddTodo({ handleAddTodo, className, headingText = 'Add Todo' }: AddTodoTypes) {
   const [todoText, setTodoText] = useState('');
 
   function handleInputUpdate(e: ChangeEvent<HTMLInputElement>) {
@@ -22,7 +23,7 @@ function AddTodo({ handleAddTodo, className }: AddTodoTypes) {
 
   return (
     <div className={className}>
-      <h3 className={styles.addTodoHeading}>Add Todo</h3>
+      <h3 className={styles.addTodoHeading}>{ headingText }</h3>
       <Input
         placeholder='Add Todo'
         onChange={handleInputUpdate}

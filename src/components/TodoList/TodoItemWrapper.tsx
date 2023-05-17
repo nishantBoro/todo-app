@@ -69,6 +69,7 @@ function TodoItemWrapper(props: TodoItemWrapperTypes) {
             <AddTodo
               handleAddTodo={handleAddSubtask}
               className={styles.addTodoSubtask}
+              headingText="Add Subtask"
             />
           </div>
         )
